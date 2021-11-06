@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ranco/data/chords.dart';
-import 'package:ranco/ui/home.dart';
+import 'package:ranco/ui/home_page.dart';
 
 void main() {
   runApp(const Ranco());
@@ -13,7 +12,7 @@ class Ranco extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'Ranco',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

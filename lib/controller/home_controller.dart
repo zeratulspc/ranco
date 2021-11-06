@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:ranco/data/chords.dart';
+import 'package:ranco/ui/setting_sheet.dart';
 
 class HomeController extends GetxController {
   final _chord = ''.obs;
@@ -21,12 +23,17 @@ class HomeController extends GetxController {
   bool get seventh => _seventh.value;
 
   Timer? timer;
+  int targetTime = 0;
+
+  openSettingSheet() {
+    Get.bottomSheet(SettingSheet(),);
+  }
 
   setTimer(int target) {
-    print("Set Timer");
     stopTimer();
+    targetTime = target;
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if(time == 0) {
+      if(time <= 0) {
         changeChord();
         time = target;
       }

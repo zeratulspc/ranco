@@ -25,7 +25,7 @@ class Chords {
   static String getRandomChord({
     required bool flat,
     required bool seventh,
-  }) { //♭ ♯
+  }) {
     bool isFlat = flat?Random().nextBool():false;
     bool isSeventh = seventh?Random().nextBool():false;
     String _root = roots[Random().nextInt(roots.length)];
