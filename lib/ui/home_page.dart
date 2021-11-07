@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Obx((){
-              double timerValue = (hc.targetTime-hc.time)/hc.targetTime;
+              double timerValue = (hc.targetTime-hc.time-1)/hc.targetTime;
               return Stack(
                 children: [
                   Positioned.fill(
@@ -31,9 +31,16 @@ class HomePage extends StatelessWidget {
                         ),
                       )
                   ),
-                  CircularProgressIndicator(
-                    value: timerValue.isNaN?0:timerValue,
-                  ),
+                  TweenAnimationBuilder(
+                      tween: Tween<double>(begin: 0, end: timerValue.isNaN?0:timerValue,),
+                      duration: const Duration(milliseconds: 100),
+                      curve:Curves.ease,
+                      builder: (context, double v, Widget? child) {
+                        return CircularProgressIndicator(
+                          value: v,
+                        );
+                      }
+                  )
                 ],
               );
             }),
