@@ -15,25 +15,28 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Obx(()=>Stack(
-              children: [
-                Positioned.fill(
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "${hc.time+1}",
-                      style: TextStyle(
-                        fontSize: 24,
-                        color:Get.theme.primaryColorLight
-                      ),
-                    ),
-                  )
-                ),
-                CircularProgressIndicator(
-                  value: (hc.targetTime/100)*(hc.targetTime-hc.time),
-                ),
-              ],
-            )),
+            Obx((){
+              double timerValue = (hc.targetTime-hc.time)/hc.targetTime;
+              return Stack(
+                children: [
+                  Positioned.fill(
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text( // timerValue.isNaN?0:timerValue
+                          "${timerValue.isNaN?'':hc.time+1}",
+                          style: TextStyle(
+                              fontSize: 24,
+                              color:Get.theme.primaryColorLight
+                          ),
+                        ),
+                      )
+                  ),
+                  CircularProgressIndicator(
+                    value: timerValue.isNaN?0:timerValue,
+                  ),
+                ],
+              );
+            }),
             Obx(()=>Text(
               hc.chord,
               style: const TextStyle(
