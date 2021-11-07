@@ -38,7 +38,7 @@ class SettingSheet extends StatelessWidget {
               ),
               Column(
                 children: [
-                  Container(
+                  SizedBox(
                     height: 100,
                     width: Get.width,
                     child: Swiper(
@@ -82,7 +82,7 @@ class SettingSheet extends StatelessWidget {
                   ),
                 ],
               ),
-              Expanded(child: SizedBox()),
+              const Expanded(child: SizedBox()),
               ElevatedButton(
                 onPressed: (){
                   hc.flat = isFlat.value;

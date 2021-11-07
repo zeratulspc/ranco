@@ -22,6 +22,10 @@ class HomeController extends GetxController {
   set seventh(bool v) => _seventh.value = v;
   bool get seventh => _seventh.value;
 
+  final _isStarted = false.obs;
+  set isStarted(bool v) => _isStarted.value = v;
+  bool get isStarted => _isStarted.value;
+
   Timer? timer;
   int targetTime = 0;
 
@@ -29,8 +33,14 @@ class HomeController extends GetxController {
     Get.bottomSheet(SettingSheet(),);
   }
 
+  initTimer() {
+    if(timer!=null) timer!.cancel();
+    timer = null;
+  }
+
   setTimer(int target) {
-    stopTimer();
+    initTimer();
+    isStarted=true;
     targetTime = target;
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if(time <= 0) {
@@ -42,8 +52,8 @@ class HomeController extends GetxController {
   }
 
   stopTimer() {
-    if(timer!=null) timer!.cancel();
-    timer = null;
+    isStarted=false;
+    initTimer();
   }
 
   changeChord() {
