@@ -42,6 +42,7 @@ class HomeController extends GetxController {
     initTimer();
     isStarted=true;
     targetTime = target;
+    time = 0;
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if(time <= 0) {
         changeChord();

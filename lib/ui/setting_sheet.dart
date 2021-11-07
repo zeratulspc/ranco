@@ -42,7 +42,7 @@ class SettingSheet extends StatelessWidget {
                     height: 100,
                     width: Get.width,
                     child: Swiper(
-                      itemCount: 100,
+                      itemCount: 99,
                       viewportFraction: 0.5,
                       scale: 0.2,
                       index: index.value,
