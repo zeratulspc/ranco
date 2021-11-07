@@ -14,8 +14,9 @@ class Ranco extends StatelessWidget {
     return GetMaterialApp(
       title: 'Ranco',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.cyan,
       ),
+      debugShowCheckedModeBanner: false,
       home: HomePage(),
     );
   }
