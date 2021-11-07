@@ -13,7 +13,7 @@ class SettingSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    index.value = hc.targetTime;
+    index.value = hc.targetTime!=0?hc.targetTime-1:0;
     isFlat.value = hc.flat;
     isSeventh.value = hc.seventh;
     return Container(

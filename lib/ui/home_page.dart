@@ -17,13 +17,16 @@ class HomePage extends StatelessWidget {
           children: [
             Obx((){
               double timerValue = (hc.targetTime-hc.time-1)/hc.targetTime;
+              if(timerValue.isNaN||timerValue.isInfinite) {
+                timerValue=0;
+              }
               return Stack(
                 children: [
                   Positioned.fill(
                       child: Align(
                         alignment: Alignment.center,
-                        child: Text( // timerValue.isNaN?0:timerValue
-                          "${timerValue.isNaN?'':hc.time+1}",
+                        child: Text(
+                          "${timerValue!=0?hc.time+1:''}",
                           style: TextStyle(
                               fontSize: 24,
                               color:Get.theme.primaryColorLight
@@ -32,7 +35,7 @@ class HomePage extends StatelessWidget {
                       )
                   ),
                   TweenAnimationBuilder(
-                      tween: Tween<double>(begin: 0, end: timerValue.isNaN?0:timerValue,),
+                      tween: Tween<double>(begin: 0, end: timerValue),
                       duration: const Duration(milliseconds: 100),
                       curve:Curves.ease,
                       builder: (context, double v, Widget? child) {
@@ -40,7 +43,7 @@ class HomePage extends StatelessWidget {
                           value: v,
                         );
                       }
-                  )
+                  ),
                 ],
               );
             }),
