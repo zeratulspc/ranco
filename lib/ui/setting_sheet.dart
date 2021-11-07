@@ -82,21 +82,19 @@ class SettingSheet extends StatelessWidget {
                   ),
                 ],
               ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: ElevatedButton(
-                  onPressed: (){
-                    hc.flat = isFlat.value;
-                    hc.seventh = isSeventh.value;
-                    hc.setTimer(index.value+1);
-                    Get.back();
-                  },
-                  child: SizedBox(
-                    width: Get.width,
-                    child: const Text(
-                      "적용하기",
-                      textAlign: TextAlign.center,
-                    ),
+              Expanded(child: SizedBox()),
+              ElevatedButton(
+                onPressed: (){
+                  hc.flat = isFlat.value;
+                  hc.seventh = isSeventh.value;
+                  hc.setTimer(index.value+1);
+                  Get.back();
+                },
+                child: SizedBox(
+                  width: Get.width,
+                  child: const Text(
+                    "적용하기",
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ),
